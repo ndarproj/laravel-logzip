@@ -31,36 +31,38 @@ class Logzip extends Command
 
 	public function handle()
 	{
-		if (config('logzip.log_delete')) {
-			$this->logsPath = storage_path('logs') . '/';
+		if (config('logzip.log_compress_files') === false) {
+			return $this->warn('Logzip is disabled');
+		}
 
-			$zip = new ZipArchive();
-			$zipBasename =  config('logzip.log_zip_filename') . '-' . (new DateTimeImmutable)->format('Y-m-d-H-i-s') . '.zip';
-			$zipFilename = $this->logsPath . $zipBasename;
+		$this->logsPath = storage_path('logs') . '/';
 
-			if ($files = scandir($this->logsPath)) {
+		$zip = new ZipArchive();
+		$zipBasename =  config('logzip.log_zip_filename') . '-' . (new DateTimeImmutable)->format('Y-m-d-H-i-s') . '.zip';
+		$zipFilename = $this->logsPath . $zipBasename;
 
-				//check if zip exists
-				if ($zip->open($zipFilename, ZipArchive::CREATE) !== TRUE) {
-					error_log("cannot open <$zipFilename>\n");
-				}
+		if ($files = scandir($this->logsPath)) {
 
-				$files = preg_grep("/^.*\.(log)$/", $files);
+			//check if zip exists
+			if ($zip->open($zipFilename, ZipArchive::CREATE) !== TRUE) {
+				error_log("cannot open <$zipFilename>\n");
+			}
 
-				foreach ($files as $file) {
-					$zip->addFile($this->logsPath . '/' . $file, $file);
-					array_push($this->files, $file);
-				}
+			$files = preg_grep("/^.*\.(log)$/", $files);
 
-				if ($zip->numFiles === 0) {
-					return $this->warn('No logs to compress...');
-				}
+			foreach ($files as $file) {
+				$zip->addFile($this->logsPath . '/' . $file, $file);
+				array_push($this->files, $file);
+			}
 
-				$zip->close() ? $this->info('Compressed logs created: ' . $zipBasename) : $this->error('Compressing Logs Failed');
+			if ($zip->numFiles === 0) {
+				return $this->warn('No logs to compress...');
+			}
 
-				if (config('logzip.log_delete') === true) {
-					$this->deleteLogs();
-				}
+			$zip->close() ? $this->info('Compressed logs created: ' . $zipBasename) : $this->error('Compressing Logs Failed');
+
+			if (config('logzip.log_delete') === true) {
+				$this->deleteLogs();
 			}
 		}
 	}
