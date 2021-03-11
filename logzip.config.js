@@ -6,7 +6,7 @@ module.exports = {
 			script: 'artisan',
 			args: 'log:zip',
 			watch: false,
-			cron: '0/1 * * * *',
+			cron: '0 * * * *',
 			autorestart: false,
 		}
 	]
