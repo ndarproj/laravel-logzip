@@ -30,5 +30,5 @@ return [
     | This option defines if the logs should be deleted after being compressed.
     | set value to true to enable
     */
-    'log_delete' => true,
+    'log_delete' => false,
 ];
