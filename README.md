@@ -13,8 +13,8 @@ composer require ndarproj/laravel-logzip
 
 ```
 ```diff
-- Incase you encounter this error - Fatal error: Allowed memory size of 1610612736
-run: composer self-update --2
+- run this command if ever you encounter this error - Fatal error: Allowed memory size of 1610612736
+composer self-update --2
 ```
 
 
