@@ -4,7 +4,7 @@ This package allows you to compress or zip laravel logs with just one command.
 
 ## Installation
 
-This package can be used in Laravel 5.5 or higher.
+This package can be used in Laravel 5 or higher.
 
 You can install the package via composer:
 
