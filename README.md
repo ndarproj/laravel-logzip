@@ -19,7 +19,7 @@ To compress all .log files inside the storage/logs folder run:
 php artisan log:zip
 ```
 
-## Schedule log compression with PM2
+## Schedule / Automate laravel log compression / zip with PM2
 
 Install [pm2](https://github.com/Unitech/pm2) with NPM. You can download NPM [HERE](https://nodejs.org/en/download/)
 ```bash
