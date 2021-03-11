@@ -1,6 +1,6 @@
 {
     "name": "ndarproj/laravel-logzip",
-    "description": "simple package for compressing laravel daily logs",
+    "description": "Compress your laravel logs into a zip file",
     "keywords": [
         "laravel",
         "logzip",
