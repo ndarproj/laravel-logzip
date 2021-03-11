@@ -1,0 +1,40 @@
+{
+    "name": "ndarproj/laravel-logzip",
+    "description": "simple package for compressing laravel daily logs",
+    "keywords": [
+        "laravel",
+        "logzip",
+        "compress",
+        "logs",
+        "zip",
+        "rotate",
+        "compression"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ndarproj",
+            "email": "ndarproj@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2 | ^8.0",
+        "illuminate/config": "^6.0|^7.0|^8.0",
+        "illuminate/console": "^6.0|^7.0|^8.0",
+        "illuminate/log": "^6.0|^7.0|^8.0",
+        "illuminate/support": "^6.0|^7.0|^8.0",
+        "monolog/monolog": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ndarproj\\Logzip\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ndarproj\\Logzip\\LogzipServiceProvider"
+            ]
+        }
+    }
+}
