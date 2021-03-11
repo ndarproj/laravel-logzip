@@ -10,7 +10,13 @@ You can install the package via composer:
 
 ```bash
 composer require ndarproj/laravel-logzip
+
 ```
+```diff
+- Incase you encounter this error - Fatal error: Allowed memory size of 1610612736
+run: composer self-update --2
+```
+
 
 ## Usage / Command
 
